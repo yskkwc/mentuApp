@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AppName</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title><%= full_title(page_title: yield(:title)) %></title>
+    <%= render 'layouts/head' %>
   </head>
-
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/flash' %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <div class="container">
+      <%= render 'layouts/footer' %>
+    </div>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>
