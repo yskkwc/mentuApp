@@ -1,0 +1,39 @@
+<header>
+  <nav class="navbar navbar-fixed-top navbar-default navbar-left header">
+    <div class="container-fluid header-fluid">
+      <div class="navbar-header header-nav">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <% if user_signed_in? %>
+          <%= link_to 'MENTU', '#', id: "logo" %>
+        <% else %>
+          <%= link_to 'MENTU', root_path, id: "logo" %>
+        <% end %>
+      </div>
+      <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+        <ul class="nav navbar-nav header-ul">
+          <li class="active">
+            <% if user_signed_in? %>
+              <%= link_to 'Home', '#' %>
+            <% else %>
+              <%= link_to 'Home', root_path %>
+            <% end %>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right header-ul">
+          <% if user_signed_in? %>
+            <li><%= link_to 'Mypage', '#' %></li>
+            <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete, data: {confirm: "ログアウトします。よろしいですか？"} %></li>
+          <% else %>
+            <li><%= link_to 'Contact', '#' %></li>
+            <li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
+            <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
