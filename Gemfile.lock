@@ -64,6 +64,7 @@ GEM
     aws-sigv4 (1.2.2)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
+    bcrypt_pbkdf (1.0.1)
     bindex (0.8.1)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
@@ -128,6 +129,7 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    ed25519 (1.2.4)
     erubi (1.10.0)
     excon (0.78.1)
     execjs (2.7.0)
@@ -411,6 +413,7 @@ DEPENDENCIES
   annotate
   autoprefixer-rails
   aws-sdk (~> 2.3)
+  bcrypt_pbkdf
   bootsnap (>= 1.1.0)
   bootstrap-sass
   bootstrap-will_paginate
@@ -425,6 +428,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  ed25519
   factory_bot_rails
   fog-aws
   font-awesome-rails
