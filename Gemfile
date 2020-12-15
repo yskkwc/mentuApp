@@ -59,6 +59,10 @@ group :development, :test do
   gem 'annotate'
   gem 'rubocop-airbnb'
   gem 'rails-controller-testing'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
@@ -78,6 +82,10 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'launchy'
+end
+
+group :production, :staging do
+  gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
