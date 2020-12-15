@@ -11,13 +11,16 @@ set :branch, ENV['BRANCH'] if ENV['BRANCH']
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/var/www/mentuApp"
 set :linked_files, fetch(:linked_files, []).push('config/settings.yml')
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, fetch(:linked_dirs, []).push(
+  'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system'
+)
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
-# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
+# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto,
+#   truncate: :auto
 
 # Default value for :pty is false
 # set :pty, true
