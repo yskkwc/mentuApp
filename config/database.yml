@@ -53,5 +53,5 @@ production:
   pool: 5
   database: mentuApp_production
   username: root
-  password: gabasu3710A*
+  password: <%= ENV['DB_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
