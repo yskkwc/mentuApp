@@ -1,4 +1,10 @@
 class HomeController < ApplicationController
   def home
   end
+
+  def policy
+  end
+
+  def contact
+  end
 end

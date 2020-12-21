@@ -8,7 +8,7 @@
           <span class="icon-bar"></span>
         </button>
         <% if user_signed_in? %>
-          <%= link_to 'MENTU', '#', id: "logo" %>
+          <%= link_to 'MENTU', users_path, id: "logo" %>
         <% else %>
           <%= link_to 'MENTU', root_path, id: "logo" %>
         <% end %>
@@ -17,7 +17,7 @@
         <ul class="nav navbar-nav header-ul">
           <li class="active">
             <% if user_signed_in? %>
-              <%= link_to 'Home', '#' %>
+              <%= link_to 'Home', users_path %>
             <% else %>
               <%= link_to 'Home', root_path %>
             <% end %>
@@ -25,10 +25,10 @@
         </ul>
         <ul class="nav navbar-nav navbar-right header-ul">
           <% if user_signed_in? %>
-            <li><%= link_to 'Mypage', '#' %></li>
+            <li><%= link_to 'Mypage', user_path(current_user) %></li>
             <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete, data: {confirm: "ログアウトします。よろしいですか？"} %></li>
           <% else %>
-            <li><%= link_to 'Contact', '#' %></li>
+            <li><%= link_to 'Contact', contact_path %></li>
             <li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
             <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           <% end %>

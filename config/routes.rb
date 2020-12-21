@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: [:index, :show]
+
+  #ログイン前ページ
+  get '/policy'  => 'home#policy'
+  get '/contact' => 'home#contact'
 end
