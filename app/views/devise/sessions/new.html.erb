@@ -3,7 +3,7 @@
     <h3 class="mt-1 mb-3">ログイン</h3>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
-      <%= f.label :username, "ユーザ名", :class => "form-label" %>
+      <%= f.label :username, "ユーザー名", :class => "form-label" %>
       <%= f.text_field :username, autofocus: true, autocomplete: "username", :class => "form-control" %>
     </div>
 
