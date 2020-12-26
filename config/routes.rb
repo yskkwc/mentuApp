@@ -12,7 +12,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
 
-  #ログイン前ページ
+  # パスワード変更ページ
+  get   '/edit_password'   => 'users#edit_password'
+  patch '/update_password' => 'users#update_password'
+  put   '/update_password' => 'users#update_password'
+
+  # ログイン前ページ
   get '/policy'  => 'home#policy'
   get '/contact' => 'home#contact'
 end
