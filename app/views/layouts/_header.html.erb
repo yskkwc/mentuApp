@@ -23,7 +23,7 @@
             <% end %>
           </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right header-ul">
+        <ul class="nav navbar-nav navbar-right header-ul header-navi">
           <% if user_signed_in? %>
             <li><%= link_to 'Mypage', user_path(current_user) %></li>
             <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete, data: {confirm: "ログアウトします。よろしいですか？"} %></li>
