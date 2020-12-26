@@ -18,11 +18,9 @@ class User < ApplicationRecord
     end
   end
 
-  class << self
-    private
-
-    def dummy_email(auth)
-      "#{auth.uid}@example.com"
-    end
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
   end
+
+  private_class_method :method
 end
