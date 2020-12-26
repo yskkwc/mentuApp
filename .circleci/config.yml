@@ -14,6 +14,7 @@ jobs:
           - MYSQL_USERNAME: 'root'
           - MYSQL_PASSWORD: ''
           - MYSQL_PORT: 3306
+          - SELENIUM_DRIVER_URL: 'http://selenium_chrome:4444/wd/hub'
 
       - image: circleci/mysql:5.7
         environment:
