@@ -1,37 +1,20 @@
-# Ruby CircleCI 2.0 configuration file
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/ruby:2.5.8-node-browsers
-        environment:
-          - BUNDLER_VERSION: 1.17.3
-          - RAILS_ENV: 'test'
-          - MYSQL_HOST: 127.0.0.1
-          - MYSQL_USERNAME: 'root'
-          - MYSQL_PASSWORD: ''
-          - MYSQL_PORT: 3306
-          - SELENIUM_DRIVER_URL: 'http://selenium_chrome:4444/wd/hub'
-
       - image: circleci/mysql:5.7
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
-
-# Specify service dependencies here if necessary
-# CircleCI maintains a library of pre-built images
-# documented at https://circleci.com/docs/2.0/circleci-images/
-# - image: circleci/postgres:9.4
+          - RAILS_ENV: 'test'
+          - BUNDLER_VERSION: 1.17.3
+      - image: selenium/standalone-chrome-debug
+        name: chrome
 
     working_directory: ~/repo
-
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -49,29 +32,37 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      - run: mv config/database.ci.yml config/database.yml
+      - run: mv config/database.yml.ci config/database.yml
+
       # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run: RAILS_ENV=test bundle exec rake db:create
+      - run: RAILS_ENV=test bundle exec rake db:schema:load
+
       - run:
-          name: Rubocop-airbnb
+          name: rubocop-airbnb
           command: bundle exec rubocop --require rubocop-airbnb
+
       - run:
-          name: RSpec
+          name: rspec test
           command: |
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
               circleci tests split --split-by=timings)"
             bundle exec rspec \
-              --format progress \
               --format RspecJunitFormatter \
               --out /tmp/test-results/rspec.xml \
               --format progress \
               $TEST_FILES
-
-      # collect reports
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+      - add_ssh_keys:
+          fingerprints:
+            - "dd:8c:50:7f:a3:ee:d5:8b:8f:71:0c:79:c5:86:f1:cb"
+      - deploy:
+          name: Capistrano deploy flow
+          command:
+            bundle exec cap production deploy
