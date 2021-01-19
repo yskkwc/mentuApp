@@ -20,14 +20,6 @@ RSpec.describe 'users_system', type: :system do
       visit user_path(signup.id)
       expect(current_path).to eq user_path(signup.id)
     end
-
-    it 'can do from Login to Logout' do
-      login
-      click_on 'Logout'
-      expect(page.driver.browser.switch_to.alert.text).to eq "ログアウトします。よろしいですか？"
-      page.driver.browser.switch_to.alert.accept
-      expect(page).to have_content 'Signed out successfully.'
-    end
   end
 
   context 'not have created user' do
