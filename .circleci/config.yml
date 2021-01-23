@@ -65,4 +65,4 @@ jobs:
       - deploy:
           name: Capistrano deploy flow
           command:
-            bundle exec cap production deploy
+            bundle exec cap production deploy BRANCH=dev01_1
