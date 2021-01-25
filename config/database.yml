@@ -9,6 +9,7 @@ default: &default
 development:
   <<: *default
   database: app_name_development
+  host: db
 
 test:
   <<: *default
@@ -19,6 +20,6 @@ production:
   database: mentuApp_production
   pool: 5
   username: root
-  password: gabasu3710A*
+  password: <%= ENV['DB_PASSWORD'] %>
   host: 18.179.227.152
   socket: /var/lib/mysql/mysql.sock
