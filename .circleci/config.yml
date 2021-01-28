@@ -64,5 +64,11 @@ jobs:
             - "2a:f4:90:4a:2a:bf:86:5a:e8:74:8f:e5:3c:ed:88:eb"
       - deploy:
           name: Capistrano deploy flow
-          command:
-            bundle exec cap production deploy BRANCH=dev01_1
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
+
+          #command:
+          #  bundle exec cap production deploy BRANCH=dev01_1
