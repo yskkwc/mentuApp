@@ -1,4 +1,4 @@
-RSpec.describe "Homes", type: :request do
+RSpec.describe "Home_request", type: :request do
   describe "GET root" do
     it "returns http success" do
       get root_path

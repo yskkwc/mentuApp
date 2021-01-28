@@ -1,0 +1,9 @@
+<%= provide(:title, @user.username) %>
+<div class="row">
+  <aside class="col-md-6">
+    <%= render 'users/shared/user_info' %>
+    <%= link_to "ホームへ戻る", users_path %>
+  </aside>
+  <div class="col-md-6">
+  </div>
+</div>

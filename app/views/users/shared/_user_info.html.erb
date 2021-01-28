@@ -1,0 +1,7 @@
+<section class="follow">
+  <% if @user == current_user %>
+    <li>ユーザーネーム: <%= @user.username %></li>
+    <li>email: <%= @user.email %></li>
+    <li><%= link_to "プロフィールを編集/削除する", edit_user_registration_path %></li>
+  <% end %>
+</section>

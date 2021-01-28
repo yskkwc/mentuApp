@@ -1,4 +1,4 @@
-RSpec.describe "Users", type: :request do
+RSpec.describe "Users_request", type: :request do
   let(:user) do
     FactoryBot.create(:user)
   end
